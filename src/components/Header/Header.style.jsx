@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import TriangleDown from "baseui/icon/triangle-down";
 import { StatefulPopover, PLACEMENT } from "baseui/popover";
 import { StatefulMenu } from "baseui/menu";
 import { MdArrowDropDown } from "react-icons/md";
@@ -11,6 +10,9 @@ export const HeaderButtonContainer = styled.div`
   justify-content: flex-end;
   margin-top: 0.5rem;
   background-color: ;
+`;
+const ButtonArrow = styled(MdArrowDropDown)`
+  color: ${(props) => props.theme.primaryColor};
 `;
 
 const Button = styled.button`
@@ -52,7 +54,7 @@ export const HeaderButton = () => {
       <HeaderButtonContainer>
         <Button>
           Abuja Office &nbsp;
-          <MdArrowDropDown />
+          <ButtonArrow />
         </Button>
       </HeaderButtonContainer>
     </StatefulPopover>

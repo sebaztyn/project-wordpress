@@ -20,6 +20,16 @@ const NavContainer = styled.nav`
   padding: 10px;
 `;
 
+const LocationIcon = styled(MdLocationOn)`
+  color: ${(props) => props.theme.complimentaryColor};
+`;
+const ClockIcon = styled(FaRegClock)`
+  color: ${(props) => props.theme.complimentaryColor};
+`;
+const PhoneIcon = styled(FaPhoneAlt)`
+  color: ${(props) => props.theme.complimentaryColor};
+`;
+
 const Header = () => {
   return (
     <>
@@ -27,16 +37,16 @@ const Header = () => {
         <HeaderButton />
         <ContentDiv>
           <Paragraph2 color="white">
-            <MdLocationOn />
+            <LocationIcon />
             &nbsp;Suite B1, First Floor,Asta Galleria,Plot 1185 Parkway
             District, Cadestrial Zone B06, Mabushi, Abuja
           </Paragraph2>
           <Paragraph2 color="white">
-            <FaRegClock /> Mon - Sat 8.00 - 18.00. Sunday CLOSED
+            <ClockIcon /> Mon - Sat 8.00 - 18.00. Sunday CLOSED
           </Paragraph2>
         </ContentDiv>
         <HotlineDiv>
-          <FaPhoneAlt />
+          <PhoneIcon />
           &nbsp;+2349059134244,+2348035332543
         </HotlineDiv>
       </HeaderContainer>
