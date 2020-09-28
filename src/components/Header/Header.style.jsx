@@ -1,9 +1,9 @@
 import React from "react";
-import { Button } from "baseui/button";
 import styled from "styled-components";
 import TriangleDown from "baseui/icon/triangle-down";
 import { StatefulPopover, PLACEMENT } from "baseui/popover";
 import { StatefulMenu } from "baseui/menu";
+import { MdArrowDropDown } from "react-icons/md";
 const ITEMS = [{ label: "Abuja Office" }, { label: "Sokoto Office" }];
 
 export const HeaderButtonContainer = styled.div`
@@ -11,6 +11,15 @@ export const HeaderButtonContainer = styled.div`
   justify-content: flex-end;
   margin-top: 0.5rem;
   background-color: ;
+`;
+
+const Button = styled.button`
+  background-color: ${(props) => props.theme.complimentaryColor};
+  color: ${(props) => props.theme.primaryColor};
+  &:hover:green;
+  padding: 10px 15px;
+  outline:none;
+  border: none
 `;
 
 export const HeaderButton = () => {
@@ -41,27 +50,9 @@ export const HeaderButton = () => {
       )}
     >
       <HeaderButtonContainer>
-        <Button
-          overrides={{
-            BaseButton: {
-              style: ({ $theme, $isFocusVisible }) => ({
-                backgroundColor: $isFocusVisible
-                  ? $theme.colors.primary400
-                  : $theme.colors.accent400,
-                color: $theme.colors.primary400,
-                ":hover": $theme.colors.primary400,
-              }),
-            },
-            EndEnhancer: {
-              style: ({ $theme }) => ({
-                color: $theme.colors.primary400,
-              }),
-              // component: TriangleDown
-            },
-          }}
-          endEnhancer={TriangleDown}
-        >
-          Abuja Office
+        <Button>
+          Abuja Office &nbsp;
+          <MdArrowDropDown />
         </Button>
       </HeaderButtonContainer>
     </StatefulPopover>
@@ -74,4 +65,5 @@ export const HeaderContainer = styled.div`
   padding-left: 3rem;
   padding-right: 3rem;
   background-color: ${(props) => props.theme.primaryColor};
+  font-size: ${(props) => props.theme.font12};
 `;
