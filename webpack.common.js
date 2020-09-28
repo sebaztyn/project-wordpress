@@ -3,7 +3,7 @@ module.exports = {
   module: {
     rules: [
       { test: /\.svg$/, use: "svg-inline-loader" },
-      { test: /\.css$/, use: ["style-loader", "css-loader", "sass-loader"] },
+      { test: /\.css$/, use: ["style-loader", "css-loader"] },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -15,15 +15,23 @@ module.exports = {
       },
       { test: /\.html$/, use: "html-loader" },
       {
-        test: /\.(svg|jpg|png|jpeg|gif)$/,
-        use: {
-          loader: "file-loader",
-          options: {
-            name: "[name][hash][ext]",
-            outputPath: "imgs"
-          }
-        }
-      }
-    ]
-  }
+        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name][hash][ext]",
+              outputPath: "imgs",
+            },
+          },
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+    ],
+  },
 };

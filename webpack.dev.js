@@ -6,30 +6,24 @@ const { merge } = require("webpack-merge");
 module.exports = merge(common, {
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].bundle.js"
-  },
-  devServer: {
-    hot: true,
-    hotOnly: true,
-    port: 3000,
-    disableHostCheck: true
+    filename: "[name].bundle.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/template.html"
-    })
+      template: "./src/template.html",
+    }),
   ],
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      },
-      {
-        test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"]
-      }
-    ]
-  },
-  mode: "development"
+  // module: {
+  //   rules: [
+  //     {
+  //       test: /\.css$/,
+  //       use: ["style-loader", "css-loader"],
+  //     },
+  //     {
+  //       test: /\.scss$/,
+  //       use: ["style-loader", "css-loader", "sass-loader"],
+  //     },
+  //   ],
+  // },
+  mode: "development",
 });
