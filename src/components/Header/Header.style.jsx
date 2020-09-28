@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { StatefulPopover, PLACEMENT } from "baseui/popover";
 import { StatefulMenu } from "baseui/menu";
@@ -6,10 +6,13 @@ import { MdArrowDropDown } from "react-icons/md";
 const ITEMS = [{ label: "Abuja Office" }, { label: "Sokoto Office" }];
 
 export const HeaderButtonContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  // display: flex;
+  // justify-content: flex-end;
+  // flex-dire
   margin-top: 0.5rem;
   background-color: ;
+  position: relative;
+  text-align: right;
 `;
 const ButtonArrow = styled(MdArrowDropDown)`
   color: ${(props) => props.theme.primaryColor};
@@ -21,43 +24,46 @@ const Button = styled.button`
   &:hover:green;
   padding: 10px 15px;
   outline:none;
-  border: none
+  border: none;
+`;
+
+const OfficeList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: ${props => props.top};
+  padding: 5px;
+  background-color: ${props => props.theme.primaryColor};
+  color: #ffffff;
+  overflow-y: hidden;
+  height: ${props => props.height}
 `;
 
 export const HeaderButton = () => {
+  const [buttonHeight, setButtonHeight] = useState(0)
+  const buttonRef = useRef()
+  useEffect(() => {
+    setButtonHeight(buttonRef.current.scrollHeight)
+  }, [])
+  const listRef = useRef();
+  const [headerButtonOpen, setHeaderButtonOpen] = useState(false)
   return (
-    <StatefulPopover
-      focusLock
-      placement={PLACEMENT.bottomRight}
-      content={({ close }) => (
-        <StatefulMenu
-          items={ITEMS}
-          onItemSelect={() => close()}
-          overrides={{
-            List: {
-              style: ({ $theme }) => ({
-                width: "100%",
-                backgroundColor: $theme.colors.primary400,
-                color: "#ffffff",
-              }),
-            },
-            Option: {
-              style: ({ $theme, $isHovered }) => ({
-                backgroundColor: $theme.colors.primary400,
-                color: "#ffffff",
-              }),
-            },
-          }}
-        />
-      )}
-    >
-      <HeaderButtonContainer>
-        <Button>
-          Abuja Office &nbsp;
+    <HeaderButtonContainer>
+      <Button onClick={() => {
+        console.log(listRef.current.scrollHeight)
+        setHeaderButtonOpen(!headerButtonOpen)
+      }} ref={buttonRef}>
+        Abuja Office &nbsp;
           <ButtonArrow />
-        </Button>
-      </HeaderButtonContainer>
-    </StatefulPopover>
+      </Button>
+      <OfficeList top={buttonHeight} height={headerButtonOpen ? listRef.current.scrollHeight : 0} ref={listRef}>
+        <li>Abuja Office</li>
+        <li>Sokoto Office</li>
+        <li>London Office</li>
+      </OfficeList>
+    </HeaderButtonContainer>
   );
 };
 
