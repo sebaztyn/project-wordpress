@@ -1,206 +1,137 @@
-import * as React from "react";
-import { useStyletron } from "baseui";
-import { StyledLink } from "baseui/link";
-import { Button } from "baseui/button";
-import { Layer } from "baseui/layer";
-import {
-  ChevronDown,
-  Delete,
-  Overflow as UserIcon,
-  Upload as Icon,
-} from "baseui/icon";
-import { Unstable_AppNavBar as AppNavBar, POSITION } from "baseui/app-nav-bar";
-function renderItem(item) {
-  return item.label;
-}
-const MAIN_NAV = [
-  {
-    icon: Icon,
-    item: { label: "Home" },
-    mapItemToNode: renderItem,
-    mapItemToString: renderItem,
-  },
-  {
-    icon: Icon,
-    item: { label: "About us" },
-    mapItemToNode: renderItem,
-    mapItemToString: renderItem,
-  },
-  {
-    icon: ChevronDown,
-    item: { label: "Services" },
-    mapItemToNode: renderItem,
-    mapItemToString: renderItem,
-    navExitIcon: Delete,
-    navPosition: { desktop: POSITION.horizontal },
-    nav: [
-      {
-        icon: Icon,
-        item: { label: "Secondary menu1" },
-        mapItemToNode: renderItem,
-        mapItemToString: renderItem,
-      },
-      {
-        icon: Icon,
-        item: { label: "Secondary menu2" },
-        mapItemToNode: renderItem,
-        mapItemToString: renderItem,
-      },
-      {
-        icon: Icon,
-        item: { label: "Secondary menu3" },
-        mapItemToNode: renderItem,
-        mapItemToString: renderItem,
-      },
-      {
-        icon: Icon,
-        item: { label: "Secondary menu4" },
-        mapItemToNode: renderItem,
-        mapItemToString: renderItem,
-      },
-    ],
-  },
-  {
-    icon: ChevronDown,
-    item: { label: "Gallery" },
-    mapItemToNode: renderItem,
-    mapItemToString: renderItem,
-    navExitIcon: Delete,
-    navPosition: { desktop: POSITION.horizontal },
-    nav: [
-      {
-        icon: ChevronDown,
-        item: { label: "Secondary menu1" },
-        mapItemToNode: renderItem,
-        mapItemToString: renderItem,
-        nav: [
-          {
-            icon: Icon,
-            item: { label: "Tertiary menu1" },
-            mapItemToNode: renderItem,
-            mapItemToString: renderItem,
-          },
-          {
-            icon: Icon,
-            item: { label: "Tertiary menu2" },
-            mapItemToNode: renderItem,
-            mapItemToString: renderItem,
-          },
-        ],
-      },
-      {
-        icon: Icon,
-        item: { label: "Secondary menu2" },
-        mapItemToNode: renderItem,
-        mapItemToString: renderItem,
-      },
-    ],
-  },
-  {
-    icon: Icon,
-    item: { label: "Resources" },
-    mapItemToNode: renderItem,
-    mapItemToString: renderItem,
-  },
-  {
-    icon: Icon,
-    item: { label: "Contacts" },
-    mapItemToNode: renderItem,
-    mapItemToString: renderItem,
-  },
-];
-const USER_NAV = [
-  {
-    icon: UserIcon,
-    item: { label: "Account item1" },
-    mapItemToNode: renderItem,
-    mapItemToString: renderItem,
-  },
-  {
-    icon: UserIcon,
-    item: { label: "Account item2" },
-    mapItemToNode: renderItem,
-    mapItemToString: renderItem,
-  },
-  {
-    icon: UserIcon,
-    item: { label: "Account item3" },
-    mapItemToNode: renderItem,
-    mapItemToString: renderItem,
-  },
-  {
-    icon: UserIcon,
-    item: { label: "Account item4" },
-    mapItemToNode: renderItem,
-    mapItemToString: renderItem,
-  },
-];
-function isActive(arr, item, activeItem) {
-  let active = false;
-  for (let i = 0; i < arr.length; i++) {
-    const elm = arr[i];
-    if (elm === item) {
-      if (item === activeItem) return true;
-      return isActive((item && item.nav) || [], activeItem, activeItem);
-    } else if (elm.nav) {
-      active = isActive(elm.nav || [], item, activeItem);
+import React from "react";
+import styled from "styled-components";
+import { ImFacebook, ImTwitter } from "react-icons/im";
+import { FaInstagram } from "react-icons/fa";
+
+export const NavContainer = styled.nav`
+  padding: 0.5rem 0;
+  max-width: 1040px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const NavList = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const NavListItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  :nth-of-type(2) {
+    > a {
+      display: flex;
+      padding: 0 10px;
+      :hover {
+        color: #6c98e1;
+      }
+      ~ ul {
+        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 100%;
+        left: -10px;
+        overflow: hidden;
+        display: block;
+        text-align: left;
+        padding: 0;
+        > li {
+          white-space: nowrap;
+          padding: 1rem;
+          min-width: 150px;
+          font-size: ${(props) => props.theme.font12};
+          :hover {
+            color: #ffffff;
+            background-color: ${(props) => props.theme.primaryColor};
+          }
+        }
+      }
     }
   }
-  return active;
-}
-export default () => {
-  const [css] = useStyletron();
-  const [isNavBarVisible, setIsNavBarVisible] = React.useState(true);
-  const [activeNavItem, setActiveNavItem] = React.useState();
-  const containerStyles = css({
-    boxSizing: "border-box",
-    width: "100vw",
-    position: "fixed",
-    top: "0",
-    left: "0",
-  });
-  const appDisplayName = (
-    <StyledLink
-      $style={{
-        textDecoration: "none",
-        color: "inherit",
-        ":hover": { color: "inherit" },
-        ":visited": { color: "inherit" },
-      }}
-      href={"#"}
-    >
-      App Something
-    </StyledLink>
-  );
-  return (
-    <React.Fragment>
-      {/* <Button onClick={() => setIsNavBarVisible(!isNavBarVisible)}>
-        {isNavBarVisible ? "Hide" : "Show"} navigation bar
-      </Button> */}
-      {isNavBarVisible ? (
-        <Layer>
-          <div className={containerStyles}>
-            <AppNavBar
-              appDisplayName={appDisplayName}
-              mainNav={MAIN_NAV}
-              isNavItemActive={({ item }) => {
-                return (
-                  item === activeNavItem ||
-                  isActive(MAIN_NAV, item, activeNavItem)
-                );
-              }}
-              onNavItemSelect={({ item }) => {
-                if (item === activeNavItem) return;
-                setActiveNavItem(item);
-              }}
-              userNav={USER_NAV}
-              username="Umka Marshmallow"
-              usernameSubtitle="5.0"
-              userImgUrl=""
-            />
-          </div>
-        </Layer>
-      ) : null}
-    </React.Fragment>
-  );
-};
+  :nth-of-type(3) {
+    > a {
+      display: flex;
+      padding: 0 10px;
+      :hover {
+        color: #6c98e1;
+      }
+      ~ ul {
+        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 100%;
+        left: -10px;
+        overflow: hidden;
+        display: block;
+        text-align: left;
+        padding: 0;
+        > li {
+          white-space: nowrap;
+          padding: 1rem;
+          min-width: 150px;
+          font-size: ${(props) => props.theme.font12};
+          :hover {
+            color: #ffffff;
+            background-color: ${(props) => props.theme.primaryColor};
+          }
+        }
+      }
+    }
+  }
+  :nth-of-type(4) {
+    > a {
+      display: flex;
+      padding: 0 10px;
+      :hover {
+        color: #6c98e1;
+      }
+      ~ ul {
+        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 100%;
+        left: -10px;
+        overflow: hidden;
+        display: block;
+        text-align: left;
+        padding: 0;
+        > li {
+          white-space: nowrap;
+          padding: 1rem;
+          min-width: 150px;
+          font-size: ${(props) => props.theme.font12};
+          :hover {
+            color: #ffffff;
+            background-color: ${(props) => props.theme.primaryColor};
+          }
+        }
+      }
+    }
+  }
+  :last-of-type {
+    > a {
+      display: flex;
+      padding: 0 10px;
+    }
+  }
+`;
+
+export const NavListLink = styled.a`
+  padding: 0 10px;
+  text-decoration: none;
+  color: ${(props) => props.theme.primaryColor};
+`;
+
+export const FacebookIcon = styled(ImFacebook)`
+  color: ${(props) => props.theme.primaryColor};
+  font-size: 16px;
+`;
+export const TwitterIcon = styled(ImTwitter)`
+  color: ${(props) => props.theme.primaryColor};
+  font-size: 16px;
+`;
+export const InstagramIcon = styled(FaInstagram)`
+  color: ${(props) => props.theme.primaryColor};
+  font-size: 16px;
+`;

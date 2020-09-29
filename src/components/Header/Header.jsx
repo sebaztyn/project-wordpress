@@ -1,34 +1,16 @@
 import React from "react";
-import { HeaderContainer, HeaderButton } from "./Header.style";
+import {
+  HeaderContainer,
+  HeaderButton,
+  ClockIcon,
+  PhoneIcon,
+  LocationIcon,
+  ContentDiv,
+  HotlineDiv,
+  NavContainer,
+} from "./Header.style";
 import { Paragraph2 } from "baseui/typography";
-import styled from "styled-components";
-import { MdLocationOn } from "react-icons/md";
-import { FaRegClock, FaPhoneAlt } from "react-icons/fa";
-import NavMenu from "../NavMenu/NavMenu.style";
-
-const ContentDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  max-width: 960px;
-  margin: 0.5rem auto 0;
-  color: #ffffff;
-`;
-const HotlineDiv = styled.div`
-  color: #ffffff;
-`;
-const NavContainer = styled.nav`
-  padding: 10px;
-`;
-
-const LocationIcon = styled(MdLocationOn)`
-  color: ${(props) => props.theme.complimentaryColor};
-`;
-const ClockIcon = styled(FaRegClock)`
-  color: ${(props) => props.theme.complimentaryColor};
-`;
-const PhoneIcon = styled(FaPhoneAlt)`
-  color: ${(props) => props.theme.complimentaryColor};
-`;
+import NavMenu from "../NavMenu/NavMenu";
 
 const Header = () => {
   return (
@@ -50,9 +32,7 @@ const Header = () => {
           &nbsp;+2349059134244,+2348035332543
         </HotlineDiv>
       </HeaderContainer>
-      <NavContainer>
-        <NavMenu />
-      </NavContainer>
+      <NavContainer>{<NavMenu />}</NavContainer>
     </>
   );
 };
