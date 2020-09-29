@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   entry: { main: "./src/index.js" },
   module: {
@@ -16,6 +18,7 @@ module.exports = {
       { test: /\.html$/, use: "html-loader" },
       {
         test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
+        include: [path.resolve(__dirname, "src", "assets")],
         use: [
           {
             loader: "file-loader",
@@ -24,12 +27,12 @@ module.exports = {
               outputPath: "imgs",
             },
           },
-          {
-            loader: "url-loader",
-            options: {
-              limit: 8192,
-            },
-          },
+          // {
+          //   loader: "url-loader",
+          //   options: {
+          //     limit: 8192,
+          //   },
+          // },
         ],
       },
     ],

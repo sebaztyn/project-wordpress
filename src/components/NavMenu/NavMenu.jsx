@@ -9,6 +9,7 @@ import {
   TwitterIcon,
   InstagramIcon,
 } from "./NavMenu.style";
+import HomeLogo from "../../assets/logo-1.png";
 
 const NavMenu = () => {
   const aboutUsUlRef = useRef();
@@ -19,7 +20,7 @@ const NavMenu = () => {
   // console.log("children :>> ", children);
   return (
     <NavContainer>
-      <img src="https://recdel.org.ng/wp-content/uploads/2020/05/logo-1.png" />
+      <img src={HomeLogo} />
       <NavList>
         <NavListItem>
           <NavListLink href="#">Home</NavListLink>

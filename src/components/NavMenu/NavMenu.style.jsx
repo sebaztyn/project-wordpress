@@ -16,6 +16,7 @@ export const NavList = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 500;
 `;
 
 export const NavListItem = styled.li`
@@ -30,8 +31,10 @@ export const NavListItem = styled.li`
         color: #6c98e1;
       }
       ~ ul {
+        background-color: #ffffff;
         box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
         position: absolute;
+        z-index: 10;
         top: 100%;
         left: -10px;
         overflow: hidden;
@@ -59,8 +62,10 @@ export const NavListItem = styled.li`
         color: #6c98e1;
       }
       ~ ul {
+        background-color: #ffffff;
         box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
         position: absolute;
+        z-index: 10;
         top: 100%;
         left: -10px;
         overflow: hidden;
@@ -88,6 +93,8 @@ export const NavListItem = styled.li`
         color: #6c98e1;
       }
       ~ ul {
+        background-color: #ffffff;
+        z-index: 10;
         box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
         position: absolute;
         top: 100%;
