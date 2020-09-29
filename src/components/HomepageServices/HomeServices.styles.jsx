@@ -11,6 +11,7 @@ export const ServiceContainer = styled.div`
 export const ForwardArrowIcon = styled(IoIosArrowForward)`
   color: ${(props) => props.theme.complimentaryColor};
   margin-left: 1rem;
+  font-size: 24px;
 `;
 export const ServiceHeader = styled.h1`
   padding-bottom: 2rem;
@@ -29,6 +30,22 @@ export const ServiceCard = styled.a`
   :nth-of-type(2),
   :nth-of-type(3) {
     margin-right: 2rem;
+  }
+  :hover {
+    background-color: ${(props) => props.theme.primaryColor};
+    color: #ffffff;
+  }
+  :hover div {
+    background-color: ${(props) => props.theme.primaryColor};
+    color: #ffffff;
+  }
+  :hover a {
+    background-color: ${(props) => props.theme.primaryColor};
+    color: #ffffff;
+  }
+  :hover h3 {
+    background-color: ${(props) => props.theme.primaryColor};
+    color: #ffffff;
   }
 `;
 export const ServiceCardImage = styled.img`
