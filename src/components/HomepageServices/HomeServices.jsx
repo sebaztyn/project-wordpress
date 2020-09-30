@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   ServiceCard,
   ServiceCardContent,
@@ -7,6 +7,9 @@ import {
   ServiceContainer,
   ServiceHeader,
   ForwardArrowIcon,
+  ServiceCardImageOverlay,
+  ServiceCardImageContainer,
+  AddIcon,
 } from "./HomeServices.styles";
 import CardImageOne from "../../assets/IMG-20200213-WA0004-1.jpg";
 import CardImageTwo from "../../assets/placeholder-740x440.gif";
@@ -18,7 +21,16 @@ const HomeServices = () => {
         <ServiceHeader>Services</ServiceHeader>
         <ServiceCardParent>
           <ServiceCard>
-            <ServiceCardImage src={CardImageOne} alt="card-one" />
+            <ServiceCardImageContainer>
+              <ServiceCardImage
+                src={CardImageOne}
+                alt="card-one"
+                custom="image-one"
+              />
+              <ServiceCardImageOverlay>
+                <AddIcon />
+              </ServiceCardImageOverlay>
+            </ServiceCardImageContainer>
             <ServiceCardContent>
               <h3>Financial Services</h3>
               <div>
@@ -32,7 +44,16 @@ const HomeServices = () => {
             </ServiceCardContent>
           </ServiceCard>
           <ServiceCard>
-            <ServiceCardImage src={CardImageTwo} alt="card-two" />
+            <ServiceCardImageContainer>
+              <ServiceCardImage
+                src={CardImageTwo}
+                alt="card-two"
+                custom="image-two"
+              />
+              <ServiceCardImageOverlay>
+                <AddIcon />
+              </ServiceCardImageOverlay>
+            </ServiceCardImageContainer>
             <ServiceCardContent>
               <h3>Training</h3>
               <div>
@@ -46,7 +67,16 @@ const HomeServices = () => {
             </ServiceCardContent>
           </ServiceCard>
           <ServiceCard>
-            <ServiceCardImage src={CardImageTwo} alt="card-three" />
+            <ServiceCardImageContainer>
+              <ServiceCardImage
+                src={CardImageTwo}
+                alt="card-three"
+                custom="image-three"
+              />
+              <ServiceCardImageOverlay>
+                <AddIcon />
+              </ServiceCardImageOverlay>
+            </ServiceCardImageContainer>
             <ServiceCardContent>
               <h3>Business Consultancy</h3>
               <div>
@@ -60,7 +90,16 @@ const HomeServices = () => {
             </ServiceCardContent>
           </ServiceCard>
           <ServiceCard>
-            <ServiceCardImage src={CardImageTwo} alt="card-four" />
+            <ServiceCardImageContainer>
+              <ServiceCardImage
+                src={CardImageTwo}
+                alt="card-four"
+                custom="image-four"
+              />
+              <ServiceCardImageOverlay>
+                <AddIcon />
+              </ServiceCardImageOverlay>
+            </ServiceCardImageContainer>
             <ServiceCardContent>
               <h3>Research Survey</h3>
               <div>

@@ -10,6 +10,7 @@ export const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #ffffff;
 `;
 
 export const NavList = styled.ul`

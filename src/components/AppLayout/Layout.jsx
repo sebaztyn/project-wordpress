@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "../Carousel/Carousel";
 import Header from "../Header/Header";
 import HomeBanner from "../HomeBanner/HomeBanner";
+import HomepageContactForm from "../HomepageContactForm/HomepageContactForm";
 import HomeServices from "../HomepageServices/HomeServices";
 
 const Layout = () => {
@@ -11,6 +12,7 @@ const Layout = () => {
       <Carousel />
       <HomeBanner />
       <HomeServices />
+      <HomepageContactForm />
     </div>
   );
 };

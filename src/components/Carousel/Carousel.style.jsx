@@ -51,7 +51,7 @@ export const CarouselSliderContent = styled.div`
 
 export const CarouselSliderImage = styled.img`
   object-fit: cover;
-  width: 100%;
+  flex-basis: 80vw;
   height: 50%;
 `;
 export const CarouselButtonOne = styled.button`
