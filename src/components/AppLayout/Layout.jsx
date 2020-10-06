@@ -4,6 +4,7 @@ import Header from "../Header/Header";
 import HomeBanner from "../HomeBanner/HomeBanner";
 import HomepageContactForm from "../HomepageContactForm/HomepageContactForm";
 import HomeServices from "../HomepageServices/HomeServices";
+import Videos from "../Videos/Videos.jsx";
 
 const Layout = () => {
   return (
@@ -13,6 +14,7 @@ const Layout = () => {
       <HomeBanner />
       <HomeServices />
       <HomepageContactForm />
+      <Videos />
     </div>
   );
 };
