@@ -22,7 +22,9 @@ const uploadVideo = ({ parsedData, file }) => {
       }
     };
     xhr.upload.onprogress = function (event) {
-      console.log(`Uploaded ${event.loaded} of ${event.total} bytes`);
+      console.log(
+        `${Math.floor((event.loaded * 100) / event.total)}% completed`,
+      );
     };
     xhr.send(formData);
   });
