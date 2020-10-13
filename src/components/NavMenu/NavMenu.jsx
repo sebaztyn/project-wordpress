@@ -75,6 +75,9 @@ const NavMenu = () => {
           <NavListLink href="#">Contacts</NavListLink>
         </NavListItem>
         <NavListItem>
+          <NavListLink href="#">Login</NavListLink>
+        </NavListItem>
+        <NavListItem>
           <NavListLink href="#">
             <FacebookIcon />
           </NavListLink>
