@@ -1,4 +1,5 @@
 import React from "react";
+import PaystackIntegration from "../../utils/PaystackIntegration";
 import Carousel from "../Carousel/Carousel";
 import Header from "../Header/Header";
 import HomeBanner from "../HomeBanner/HomeBanner";
@@ -15,6 +16,7 @@ const Layout = () => {
       <HomeServices />
       <HomepageContactForm />
       <Videos />
+      <PaystackIntegration />
     </div>
   );
 };

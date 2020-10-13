@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import uploadVideo from "../../utils/uploadVideo";
 
 const Videos = () => {
