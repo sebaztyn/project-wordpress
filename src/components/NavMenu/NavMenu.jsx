@@ -8,6 +8,8 @@ import {
   FacebookIcon,
   TwitterIcon,
   InstagramIcon,
+  NavRouteLink,
+  VideoRouteLink,
 } from "./NavMenu.style";
 import HomeLogo from "../../assets/logo-1.png";
 
@@ -63,7 +65,9 @@ const NavMenu = () => {
           <NavListLink href="#">Gallery</NavListLink>
           {galleryPopupVisible && (
             <NavList>
-              <NavListItem>Video</NavListItem>
+              {/* <NavListItem>Video</NavListItem> */}
+              <VideoRouteLink to="/videos">Videos</VideoRouteLink>
+
               <NavListItem>Photo</NavListItem>
             </NavList>
           )}
@@ -75,7 +79,7 @@ const NavMenu = () => {
           <NavListLink href="#">Contacts</NavListLink>
         </NavListItem>
         <NavListItem>
-          <NavListLink href="#">Login</NavListLink>
+          <NavRouteLink to="/login">Login</NavRouteLink>
         </NavListItem>
         <NavListItem>
           <NavListLink href="#">

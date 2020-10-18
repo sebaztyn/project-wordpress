@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { ImFacebook, ImTwitter } from "react-icons/im";
 import { FaInstagram } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 export const NavContainer = styled.nav`
   padding: 0.5rem 0;
-  max-width: 1040px;
+  ${"" /* max-width: 1040px; */}
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -143,3 +144,25 @@ export const InstagramIcon = styled(FaInstagram)`
   color: ${(props) => props.theme.primaryColor};
   font-size: 16px;
 `;
+export const NavRouteLink = styled(NavLink)`
+  padding: 0 10px;
+  text-decoration: none;
+  color: ${(props) => props.theme.primaryColor};
+`;
+export const VideoRouteLink = styled(NavLink)`
+  white-space: nowrap;
+  display: inline-block;
+  padding: 1rem;
+  min-width: 150px;
+  font-size: ${(props) => props.theme.font12};
+  text-decoration: none;
+  :hover {
+    color: #ffffff;
+    background-color: ${(props) => props.theme.primaryColor};
+  }
+`;
+// export const LoginLink = styled(NavLink)`
+//   padding: 0 10px;
+//   text-decoration: none;
+//   color: ${(props) => props.theme.primaryColor};
+// `;

@@ -6,18 +6,23 @@ import HomeBanner from "../HomeBanner/HomeBanner";
 import HomepageContactForm from "../HomepageContactForm/HomepageContactForm";
 import HomeServices from "../HomepageServices/HomeServices";
 import Videos from "../Videos/Videos.jsx";
+import { Switch, Route } from "react-router-dom";
+import Login from "../Login/Login";
+import Homepage from "../Homepage/Homepage";
 
 const Layout = () => {
   return (
-    <div className="homepage" style={{ backgroundColor: "#f5f5f5" }}>
-      <Header />
-      <Carousel />
-      <HomeBanner />
-      <HomeServices />
-      <HomepageContactForm />
-      <Videos />
-      <PaystackIntegration />
-    </div>
+    <Switch>
+      <Route path="/">
+        <Homepage />
+      </Route>
+      <Route exact path="/videos">
+        <Videos />
+      </Route>
+      <Route exact path="/payment">
+        <PaystackIntegration />
+      </Route>
+    </Switch>
   );
 };
 
