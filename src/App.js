@@ -4,12 +4,15 @@ import "./index.css";
 import Layout from "./components/AppLayout/Layout.jsx";
 import ThemeProvider from "./components/CustomTheme/CustomTheme.jsx";
 import { HashRouter as Router } from "react-router-dom";
+import SignupProvider from "./Context/SignupContext";
 
 function App() {
   return (
     <ThemeProvider>
       <Router>
-        <Layout />
+        <SignupProvider>
+          <Layout />
+        </SignupProvider>
       </Router>
     </ThemeProvider>
   );
