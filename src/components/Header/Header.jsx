@@ -9,7 +9,6 @@ import {
   HotlineDiv,
   NavContainer,
 } from "./Header.style";
-import { Paragraph2 } from "baseui/typography";
 import NavMenu from "../NavMenu/NavMenu";
 
 const Header = () => {
@@ -18,14 +17,14 @@ const Header = () => {
       <HeaderContainer>
         <HeaderButton />
         <ContentDiv>
-          <Paragraph2 color="white">
+          <p>
             <LocationIcon />
             &nbsp;Suite B1, First Floor,Asta Galleria,Plot 1185 Parkway
             District, Cadestrial Zone B06, Mabushi, Abuja
-          </Paragraph2>
-          <Paragraph2 color="white">
+          </p>
+          <p>
             <ClockIcon /> Mon - Sat 8.00 - 18.00. Sunday CLOSED
-          </Paragraph2>
+          </p>
         </ContentDiv>
         <HotlineDiv>
           <PhoneIcon />

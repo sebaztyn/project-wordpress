@@ -10,7 +10,7 @@ export const SignupContainer = styled.div`
   width: 100vw;
   display: flex;
   justify-content: center;
-  overflow: hidden;
+  overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 `;
 
@@ -23,12 +23,13 @@ export const SignupImage = styled.img`
 export const SignupWrapper = styled.div`
   background-color: #ffffff;
   width: 80%;
-  min-height: 95vh;
+  ${"" /* min-height: 95vh; */}
   box-shadow: 0 0 6px 6px rgba(0, 0, 0, 0.2);
   margin: 1rem auto;
   display: flex;
   padding-top: 4rem;
   position: relative;
+  overflow: auto;
   span {
     flex: 1;
     :first-of-type {

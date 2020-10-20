@@ -13,31 +13,15 @@ import {
   SignupImage,
 } from "./Signup.style";
 import DisplayImage from "../../assets/undraw_personal_goals.png";
-import axiosInstance from "../../utils/fetchData";
 import { signupContext } from "../../Context/SignupContext.js";
+import ErrorContent from "../Error/ErrorContainer";
 
 const Signup = () => {
-  const { signupData, setSignupData } = useContext(signupContext);
+  const { signupData, errorObj, submitHandler, changeHandler } = useContext(
+    signupContext,
+  );
   const history = useHistory();
 
-  const changeHandler = (event) => {
-    const { name, value } = event.target;
-    setSignupData({ ...signupData, [name]: value });
-  };
-
-  const submitHandler = async () => {
-    const keys = Object.keys(signupData);
-    Object.values(signupData).map((data, index) => {
-      const keyData = keys[index];
-      return (signupData[keyData] = data.trim());
-    });
-    const result = await axiosInstance()({
-      url: "http://localhost:5000",
-      method: "POST",
-      data: signupData,
-    });
-    console.log("result :>> ", result);
-  };
   return (
     <SignupContainer>
       <SignupWrapper>
@@ -100,6 +84,7 @@ const Signup = () => {
               />
               <SignupButton onClick={submitHandler}>Signup</SignupButton>
             </SignupInputContainer>
+            {errorObj.status && <ErrorContent errorList={errorObj.list} />}
             <RegisterLink>
               Already Signed up?&nbsp;
               <NavLink to="/login">Login</NavLink>

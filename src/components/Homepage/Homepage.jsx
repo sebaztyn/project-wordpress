@@ -9,9 +9,7 @@ import Signup from "../Signup/Signup";
 import { Route, useRouteMatch } from "react-router-dom";
 
 const Homepage = () => {
-  const { path, match } = useRouteMatch();
-  console.log("path :>> ", path);
-  console.log("match :>> ", match);
+  // const { path, match } = useRouteMatch();
   return (
     <div
       className="homepage"

@@ -17,9 +17,12 @@ const axiosInstance = () => {
       console.log("response.data", response.data);
       return response;
     },
-    (error) => error,
+    // (error) => {
+    //   console.log(error.response, ">>>>>>>>>ERROR!!!!!!!!<<<<<<<<<<<<");
+    //   return error.response;
+    // },
   );
-
+  // console.log("axiosData :>> ", axiosData);
   return axiosData;
 };
 
