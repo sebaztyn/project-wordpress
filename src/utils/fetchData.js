@@ -4,7 +4,7 @@ import LocalStorageService from "./localStorageService";
 const axiosInstance = () => {
   const token = LocalStorageService.getAccessToken();
   const axiosData = axios.create({
-    baseURL: "http://localhost:5000/",
+    baseURL: "https://wordpress-recdel.herokuapp.com/",
     headers: {
       Authorization: token ? `Bearer ${token}` : "",
       "Content-Type": "application/json;charset=UTF-8",

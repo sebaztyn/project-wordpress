@@ -4,6 +4,7 @@ export const signupContext = createContext();
 import axiosInstance from "../utils/fetchData";
 
 const SignupProvider = ({ children }) => {
+  const [loading, setLoading] = useState(false);
   const [errorObj, setErrorObj] = useState({
     status: false,
     list: [],
@@ -34,6 +35,7 @@ const SignupProvider = ({ children }) => {
   };
 
   const submitHandler = async () => {
+    setLoading(() => true);
     const keys = Object.keys(signupData);
     Object.values(signupData).map((data, index) => {
       const keyData = keys[index];
@@ -44,9 +46,10 @@ const SignupProvider = ({ children }) => {
         method: "POST",
         data: signupData,
       });
-      console.log("result :>> ", result);
+      setLoading(() => false);
     } catch (error) {
       if (error) {
+        setLoading(() => false);
         setErrorObj({
           status: true,
           list:
@@ -67,6 +70,7 @@ const SignupProvider = ({ children }) => {
         errorObj,
         submitHandler,
         changeHandler,
+        loading,
       }}
     >
       {children}

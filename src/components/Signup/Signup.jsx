@@ -15,11 +15,16 @@ import {
 import DisplayImage from "../../assets/undraw_personal_goals.png";
 import { signupContext } from "../../Context/SignupContext.js";
 import ErrorContent from "../Error/ErrorContainer";
+import Spinner from "../Spinner/Spinner";
 
 const Signup = () => {
-  const { signupData, errorObj, submitHandler, changeHandler } = useContext(
-    signupContext,
-  );
+  const {
+    signupData,
+    errorObj,
+    submitHandler,
+    changeHandler,
+    loading,
+  } = useContext(signupContext);
   const history = useHistory();
 
   return (
@@ -82,7 +87,9 @@ const Signup = () => {
                 value={signupData.confirmPassword}
                 onChange={changeHandler}
               />
-              <SignupButton onClick={submitHandler}>Signup</SignupButton>
+              <SignupButton onClick={submitHandler}>
+                {loading ? <Spinner /> : "Signup"}
+              </SignupButton>
             </SignupInputContainer>
             {errorObj.status && <ErrorContent errorList={errorObj.list} />}
             <RegisterLink>
