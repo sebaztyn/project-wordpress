@@ -74,15 +74,18 @@ export const LoginInputContainer = styled.div`
 `;
 export const LoginInput = styled.input`
   outline: none;
-  border: none;
+  border: transparent 1px solid;
   margin-bottom: 1rem;
   padding: 10px;
   border-radius: 2px;
   font-size: 14px;
-  background-color: #f8fafb;
+  background-color: ${(props) => props.theme.inputFieldColor};
   ::placeholder {
-    color: ${(props) => props.theme.primaryColor};
+    color: #757575;
     font-size: 14px;
+  }
+  :focus {
+    border: ${(props) => props.theme.primaryColor} 1px solid;
   }
 `;
 
