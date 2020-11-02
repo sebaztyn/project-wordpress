@@ -35,13 +35,5 @@ module.exports = merge(common, {
       template: "./src/template.html",
     }),
   ],
-  module: {
-    rules: [
-      {
-        test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-      },
-    ],
-  },
   mode: "production",
 });

@@ -10,7 +10,6 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: "babel-loader",
-        query: { compact: false },
         resolve: {
           extensions: [".js", ".jsx"],
         },

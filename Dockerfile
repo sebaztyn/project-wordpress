@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:alpine
 
 RUN mkdir -p /app/src
 
@@ -6,10 +6,10 @@ WORKDIR /app/src
 
 COPY package.json .
 
-RUN npm install --force
+RUN yarn
 
 COPY . .
 
 EXPOSE 8000
 
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
