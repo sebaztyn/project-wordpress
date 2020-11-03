@@ -1,7 +1,8 @@
 version: '3'
 services:
-  postgres-db:
+  db:
     image: 'postgres:latest'
+    container_name: postgres_db
   myreact:
     build: .
     ports:
