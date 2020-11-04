@@ -10,6 +10,26 @@ RUN yarn
 
 COPY . .
 
-EXPOSE 8000
+RUN yarn build
 
-CMD ["yarn", "start"]
+FROM mhart/alpine-node
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN npm install --production --force
+
+COPY --from=0 /app/src/dist .
+COPY --from=0 /app/src/deploy.js .
+
+EXPOSE 9000
+
+CMD ["node", "deploy.js"]
+
+
+
+
+
+
+# CMD ["yarn", "start"]
