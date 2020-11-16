@@ -13,10 +13,7 @@ const axiosInstance = () => {
   });
 
   axiosData.interceptors.response.use(
-    (response) => {
-      console.log("response.data", response.data);
-      return response;
-    },
+    (response) => response,
     // (error) => {
     //   console.log(error.response, ">>>>>>>>>ERROR!!!!!!!!<<<<<<<<<<<<");
     //   return error.response;

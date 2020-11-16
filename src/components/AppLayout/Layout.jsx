@@ -1,13 +1,15 @@
 import React from "react";
 import PaystackIntegration from "../../utils/PaystackIntegration";
+import Stepper from "../Stepper/Stepper";
 import Videos from "../Videos/Videos.jsx";
 import { Switch, Route } from "react-router-dom";
 import Homepage from "../Homepage/Homepage";
 
 const routes = [
   { component: Videos, path: "/videos", isExact: true },
-  { component: Homepage, path: "/", isExact: false },
   { component: PaystackIntegration, path: "/payment", isExact: true },
+  { component: Stepper, path: "/home", isExact: true },
+  { component: Homepage, path: "/", isExact: false },
 ];
 
 const Layout = () => {
@@ -16,7 +18,7 @@ const Layout = () => {
       {routes.map((data, index) => {
         return (
           <Route
-            index={index}
+            key={index}
             component={data.component}
             exact={data.isExact}
             path={data.path}

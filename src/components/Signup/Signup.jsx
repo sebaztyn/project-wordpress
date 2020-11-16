@@ -14,16 +14,16 @@ import {
 } from "./Signup.style";
 import DisplayImage from "../../assets/undraw_personal_goals.png";
 import { signupContext } from "../../Context/SignupContext.js";
-import ErrorContent from "../Error/ErrorContainer";
+import NotificationContent from "../Notification/Notification";
 import Spinner from "../Spinner/Spinner";
 
 const Signup = () => {
   const {
     signupData,
-    errorObj,
     submitHandler,
     changeHandler,
     loading,
+    notificationResponse,
   } = useContext(signupContext);
   const history = useHistory();
 
@@ -91,7 +91,17 @@ const Signup = () => {
                 {loading ? <Spinner /> : "Signup"}
               </SignupButton>
             </SignupInputContainer>
-            {errorObj.status && <ErrorContent errorList={errorObj.list} />}
+            {notificationResponse.status &&
+              notificationResponse.list.length && (
+                <NotificationContent response={notificationResponse.list} />
+              )}
+            {notificationResponse.response &&
+              typeof notificationResponse.response === "string" && (
+                <NotificationContent
+                  response={notificationResponse.response}
+                  color="#3bc552"
+                />
+              )}
             <RegisterLink>
               Already Signed up?&nbsp;
               <NavLink to="/login">Login</NavLink>

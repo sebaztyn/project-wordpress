@@ -1,14 +1,14 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 
 export const signupContext = createContext();
 import axiosInstance from "../utils/fetchData";
+import { globalContext } from "./GlobalContext";
 
 const SignupProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
-  const [errorObj, setErrorObj] = useState({
-    status: false,
-    list: [],
-  });
+  const { notificationResponse, setNotificationResponse } = useContext(
+    globalContext,
+  );
   const [signupData, setSignupData] = useState({
     firstname: "",
     lastname: "",
@@ -20,15 +20,14 @@ const SignupProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    setErrorObj({ status: false, list: [] });
+    setNotificationResponse({ status: false, list: [], response: "" });
     return () => {
-      console.log("unmounted");
-      setErrorObj({ status: false, list: [] });
+      setNotificationResponse({ status: false, list: [], response: "" });
     };
   }, []);
 
   const changeHandler = (event) => {
-    setErrorObj({ ...errorObj, status: false });
+    setNotificationResponse({ ...notificationResponse, status: false });
 
     const { name, value } = event.target;
     setSignupData({ ...signupData, [name]: value });
@@ -46,12 +45,19 @@ const SignupProvider = ({ children }) => {
         method: "POST",
         data: signupData,
       });
-      setLoading(() => false);
+      if (result.status === 201) {
+        setNotificationResponse({
+          ...notificationResponse,
+          response: "Signup successful. Redirecting...",
+        });
+        setLoading(() => false);
+      }
     } catch (error) {
       if (error) {
         setLoading(() => false);
-        setErrorObj({
+        setNotificationResponse({
           status: true,
+          response: "",
           list:
             error.response && error.response.data
               ? error.response.data.error
@@ -66,8 +72,8 @@ const SignupProvider = ({ children }) => {
       value={{
         signupData,
         setSignupData,
-        setErrorObj,
-        errorObj,
+        setNotificationResponse,
+        notificationResponse,
         submitHandler,
         changeHandler,
         loading,
