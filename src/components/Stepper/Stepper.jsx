@@ -6,6 +6,7 @@ import {
   StepperLine,
   StepperNodeContainer,
   StepperNodeText,
+  PaymentIcon,
 } from "./Stepper.style";
 
 const Stepper = () => {
@@ -13,24 +14,42 @@ const Stepper = () => {
     <StepperContainer>
       <StepperContent>
         <StepperLine myflex="0.2" />
-        <StepperNode />
+        <StepperNodeContainer>
+          <StepperNode>
+            <PaymentIcon />
+          </StepperNode>
+          <StepperNodeText>Payments</StepperNodeText>
+        </StepperNodeContainer>
         <StepperLine />
-        <StepperNode />
+        <StepperNodeContainer>
+          <StepperNode />
+          <StepperNodeText>
+            Hello dfbdhdshfmd dshjfbfdbfhgr sdbfjhfbfhjdjfbd
+          </StepperNodeText>
+        </StepperNodeContainer>
         <StepperLine />
-        <StepperNode />
+        <StepperNodeContainer>
+          <StepperNode />
+          <StepperNodeText>
+            Hello dfbdhdshfmd dshjfbfdbfhgr sdbfjhfbfhjdjfbd
+          </StepperNodeText>
+        </StepperNodeContainer>
         <StepperLine />
-        <StepperNode />
+        <StepperNodeContainer>
+          <StepperNode />
+          <StepperNodeText>
+            Hello dfbdhdshfmd dshjfbfdbfhgr sdbfjhfbfhjdjfbd
+          </StepperNodeText>
+        </StepperNodeContainer>
         <StepperLine />
-        <StepperNode />
+        <StepperNodeContainer>
+          <StepperNode />
+          <StepperNodeText>
+            Hello dfbdhdshfmd dshjfbfdbfhgr sdbfjhfbfhjdjfbd
+          </StepperNodeText>
+        </StepperNodeContainer>
         <StepperLine myflex="0.2" />
       </StepperContent>
-      <StepperNodeContainer>
-        <StepperNodeText>Hello</StepperNodeText>
-        <StepperNodeText>Hey you!!!</StepperNodeText>
-        <StepperNodeText>Hey you!!!</StepperNodeText>
-        <StepperNodeText>Hey you!!!</StepperNodeText>
-        <StepperNodeText>Hey you!!!</StepperNodeText>
-      </StepperNodeContainer>
     </StepperContainer>
   );
 };
