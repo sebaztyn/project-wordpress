@@ -1,19 +1,28 @@
-import React from "react";
-import uploadVideo from "../../utils/uploadVideo";
+import React, { useEffect, useState } from 'react';
+import axiosInstance from '../../utils/fetchData';
+import { refreshToken } from '../../utils/tokenAccess';
+import uploadVideo from '../../utils/uploadVideo';
 
 const Videos = () => {
+  const [token, setToken] = useState('');
+  useEffect(() => {
+    const fetchRefresh = async () => {
+      const token = await refreshToken();
+      setToken(token);
+    };
+    fetchRefresh();
+  }, []);
   const onFileChange = async (e) => {
     const file = e.target.files[0];
-    const data = await fetch("http://localhost:5000/upload", {
-      method: "POST",
-      body: JSON.stringify({ filename: file.name }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+    const response = await axiosInstance(token)('/upload', {
+      method: 'POST',
+      origin: 'http://127.0.0.1:8080',
+      data: { filename: file.name },
     });
-    const parsedData = await data.json();
+    // const parsedData = await data.json();
+    const parsedData = response.data;
     const uploadedResult = await uploadVideo({ parsedData, file });
-    console.log("uploadedResult :>> ", uploadedResult);
+    console.log('uploadedResult :>> ', uploadedResult);
     // const formData = new FormData();
     // Object.keys(parsedData.fields).forEach((data) => {
     //   formData.append(data, parsedData.fields[data]);

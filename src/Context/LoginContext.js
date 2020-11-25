@@ -1,9 +1,10 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 export const loginContext = createContext();
-import axiosInstance from "../utils/fetchData";
-import { globalContext, initialState } from "./GlobalContext";
+import axiosInstance from '../utils/fetchData';
+import tokenAccess from '../utils/tokenAccess';
+import { globalContext, initialState } from './GlobalContext';
 
 const LoginProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
@@ -12,8 +13,8 @@ const LoginProvider = ({ children }) => {
     globalContext,
   );
   const [loginData, setLoginData] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   useEffect(() => {
@@ -38,36 +39,37 @@ const LoginProvider = ({ children }) => {
       return (loginData[keyData] = data.trim());
     });
     try {
-      const result = await axiosInstance()("auth/login", {
-        method: "POST",
+      const result = await axiosInstance()('auth/login', {
+        method: 'POST',
         data: loginData,
       });
       if (result.status === 201) {
+        tokenAccess.setToken(result.data.token);
         setNotificationResponse({
           ...notificationResponse,
-          response: "Login successful. Redirecting...",
-          color: "#3bc552",
+          response: 'Login successful. Redirecting...',
+          color: '#3bc552',
         });
         setTimeout(() => {
-          setNotificationResponse({ ...notificationResponse, response: "" });
+          setNotificationResponse({ ...notificationResponse, response: '' });
           setLoading(() => false);
-          history.replace("/home");
+          history.replace('/home');
         }, 5000);
       }
     } catch (error) {
       if (error) {
-        if (typeof error.response.data.error === "string") {
+        if (typeof error.response.data.error === 'string') {
           setNotificationResponse({
             status: true,
             response: error.response.data.error,
             list: [],
-            color: "#ff3547",
+            color: '#ff3547',
           });
           return setLoading(() => false);
         }
         setNotificationResponse({
           status: true,
-          response: "",
+          response: '',
           list:
             error.response && error.response.data
               ? error.response.data.error
