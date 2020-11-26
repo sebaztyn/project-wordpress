@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { globalContext } from "../../Context/GlobalContext";
+import { globalContext, initialState } from "../../Context/GlobalContext";
 import { signupContext } from "../../Context/SignupContext";
 import {
   NotificationContainer,
@@ -15,11 +15,7 @@ const NotificationContent = ({ response, color }) => {
   return (
     <NotificationContainer color={color}>
       <NotificationClose
-        onClick={() =>
-          setNotificationResponse(
-            typeof response === "string" ? "" : { status: false, list: [] },
-          )
-        }
+        onClick={() => setNotificationResponse(initialState)}
       />
       <NotificationHeader>Notification(s)!</NotificationHeader>
       {Array.isArray(notificationResponse.list) &&

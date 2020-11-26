@@ -48,7 +48,6 @@ const LoginProvider = ({ children }) => {
         setNotificationResponse({
           ...notificationResponse,
           response: "Login successful. Redirecting...",
-          color: "#3bc552",
         });
         setTimeout(() => {
           setNotificationResponse({ ...notificationResponse, response: "" });
@@ -57,41 +56,38 @@ const LoginProvider = ({ children }) => {
         }, 5000);
       }
     } catch (error) {
-      if (error) {
-        console.log("error :>> ", error);
-        console.log("error.message :>> ", error.message);
-        if (!error.response) {
-          setNotificationResponse({
-            status: true,
-            response: error.message,
-            list: [],
-            color: "#ff3547",
-          });
-          return setLoading(() => false);
-        }
-        if (
-          error.response &&
-          error.response.data &&
-          typeof error.response.data.error === "string"
-        ) {
-          setNotificationResponse({
-            status: true,
-            response: error.response.data.error,
-            list: [],
-            color: "#ff3547",
-          });
-          return setLoading(() => false);
-        }
+      if (!error.response) {
         setNotificationResponse({
           status: true,
-          response: "",
-          list:
-            error.response && error.response.data
-              ? error.response.data.error
-              : [],
+          response: error.message,
+          list: [],
+          color: "#ff3547",
         });
-        setLoading(() => false);
+        return setLoading(() => false);
       }
+      if (
+        error.response &&
+        error.response.data &&
+        typeof error.response.data.error === "string"
+      ) {
+        setNotificationResponse({
+          status: true,
+          response: error.response.data.error,
+          list: [],
+          color: "#ff3547",
+        });
+        return setLoading(() => false);
+      }
+      setNotificationResponse({
+        status: true,
+        response: "",
+        list:
+          error.response && error.response.data
+            ? error.response.data.error
+            : [],
+        color: "#ff3547",
+      });
+      setLoading(() => false);
     }
   };
 

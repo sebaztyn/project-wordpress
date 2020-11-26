@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 
 export const signupContext = createContext();
 import axiosInstance from "../utils/fetchData";
-import { globalContext } from "./GlobalContext";
+import { globalContext, initialState } from "./GlobalContext";
 
 const SignupProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
@@ -20,9 +20,9 @@ const SignupProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    setNotificationResponse({ status: false, list: [], response: "" });
+    setNotificationResponse(initialState);
     return () => {
-      setNotificationResponse({ status: false, list: [], response: "" });
+      setNotificationResponse(initialState);
     };
   }, []);
 
@@ -53,17 +53,38 @@ const SignupProvider = ({ children }) => {
         setLoading(() => false);
       }
     } catch (error) {
-      if (error) {
-        setLoading(() => false);
+      if (!error.response) {
         setNotificationResponse({
           status: true,
-          response: "",
-          list:
-            error.response && error.response.data
-              ? error.response.data.error
-              : [],
+          response: error.message,
+          list: [],
+          color: "#ff3547",
         });
+        return setLoading(() => false);
       }
+      if (
+        error.response &&
+        error.response.data &&
+        typeof error.response.data.error === "string"
+      ) {
+        setNotificationResponse({
+          status: true,
+          response: error.response.data.error,
+          list: [],
+          color: "#ff3547",
+        });
+        return setLoading(() => false);
+      }
+      setNotificationResponse({
+        status: true,
+        response: "",
+        list:
+          error.response && error.response.data
+            ? error.response.data.error
+            : [],
+        color: "#ff3547",
+      });
+      setLoading(() => false);
     }
   };
 

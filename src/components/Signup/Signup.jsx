@@ -93,13 +93,25 @@ const Signup = () => {
             </SignupInputContainer>
             {notificationResponse.status &&
               notificationResponse.list.length && (
-                <NotificationContent response={notificationResponse.list} />
+                <NotificationContent
+                  response={notificationResponse.list}
+                  color={notificationResponse.color}
+                />
               )}
-            {notificationResponse.response &&
+            {!notificationResponse.status &&
+              notificationResponse.response &&
               typeof notificationResponse.response === "string" && (
                 <NotificationContent
                   response={notificationResponse.response}
-                  color="#3bc552"
+                  color={notificationResponse.color}
+                />
+              )}
+            {notificationResponse.status &&
+              notificationResponse.response &&
+              typeof notificationResponse.response === "string" && (
+                <NotificationContent
+                  response={notificationResponse.response}
+                  color={notificationResponse.color}
                 />
               )}
             <RegisterLink>

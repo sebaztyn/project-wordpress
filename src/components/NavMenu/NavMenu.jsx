@@ -19,7 +19,6 @@ const NavMenu = () => {
   const [servicesPopupVisible, setServicesPopupVisible] = useState(false);
   const [galleryPopupVisible, setGalleryPopupVisible] = useState(false);
 
-  // console.log("children :>> ", children);
   return (
     <NavContainer>
       <img src={HomeLogo} />

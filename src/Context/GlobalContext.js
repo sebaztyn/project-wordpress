@@ -6,7 +6,7 @@ export const initialState = {
   status: false,
   list: [],
   response: "",
-  color: "",
+  color: "#3bc552",
 };
 const GlobalProvider = ({ children }) => {
   const [notificationResponse, setNotificationResponse] = useState(
