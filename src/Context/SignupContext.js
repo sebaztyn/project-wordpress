@@ -1,8 +1,8 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-
-export const signupContext = createContext();
 import axiosInstance from "../utils/fetchData";
 import { globalContext, initialState } from "./GlobalContext";
+
+export const signupContext = createContext();
 
 const SignupProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
