@@ -1,11 +1,11 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
-export const loginContext = createContext();
 import axiosInstance from "../utils/fetchData";
 import tokenAccess from "../utils/tokenAccess";
 import { globalContext, initialState } from "./GlobalContext";
 
+export const loginContext = createContext();
 const LoginProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
