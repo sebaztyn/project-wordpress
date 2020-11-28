@@ -1,10 +1,12 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import axiosInstance from "../utils/fetchData";
 import { globalContext, initialState } from "./GlobalContext";
 
 export const signupContext = createContext();
 
 const SignupProvider = ({ children }) => {
+  const history = useHistory();
   const [loading, setLoading] = useState(false);
   const { notificationResponse, setNotificationResponse } = useContext(
     globalContext,
@@ -50,7 +52,14 @@ const SignupProvider = ({ children }) => {
           ...notificationResponse,
           response: "Signup successful. Redirecting...",
         });
-        setLoading(() => false);
+        setTimeout(() => {
+          setNotificationResponse({
+            ...notificationResponse,
+            response: "",
+          });
+          setLoading(() => false);
+          history.replace("/home");
+        }, 5000);
       }
     } catch (error) {
       if (!error.response) {
