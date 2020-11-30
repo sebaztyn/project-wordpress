@@ -1,11 +1,7 @@
 import axios from "axios";
-import LocalStorageService from "./localStorageService";
-import tokenAccessHandler from "./tokenAccess.js";
 
 const axiosInstance = (token = null) => {
-  // const token = LocalStorageService.getAccessToken();
   const axiosData = axios.create({
-    // baseURL: 'http://127.0.0.1:5000',
     baseURL:
       process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test"
         ? "http://localhost:5000"

@@ -1,5 +1,4 @@
-import React from "react";
-import Header from "../Header/Header";
+import React, { useContext } from "react";
 import {
   AdminDashboardCardContainer,
   AdminDashboardContainer,
@@ -14,9 +13,15 @@ import {
 import { NavContainer } from "../Header/Header.style";
 import NavMenu from "../NavMenu/NavMenu";
 import Table from "../Tables/Table";
-import TableProvider from "../../Context/TableContext";
+import TableProvider, { tableContext } from "../../Context/TableContext";
+import useWindowSize from "../../utils/useWindowSize";
 
 const AdminDashboard = () => {
+  const { windowHeight, windowWidth } = useWindowSize();
+  const {
+    tableData: { rows, count },
+  } = useContext(tableContext);
+
   return (
     <>
       <NavContainer>
@@ -62,7 +67,7 @@ const AdminDashboard = () => {
           </DisplayCards>
         </AdminDashboardCardContainer>
         <TableProvider>
-          <Table />
+          <Table columnCount={5} tableData={{ rows, count }} />
         </TableProvider>
       </AdminDashboardContainer>
     </>

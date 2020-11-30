@@ -12,10 +12,12 @@ const GlobalProvider = ({ children }) => {
   const [notificationResponse, setNotificationResponse] = useState(
     initialState,
   );
-
   return (
     <globalContext.Provider
-      value={{ notificationResponse, setNotificationResponse }}
+      value={{
+        notificationResponse,
+        setNotificationResponse,
+      }}
     >
       {children}
     </globalContext.Provider>
