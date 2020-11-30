@@ -71,6 +71,15 @@ const SignupProvider = ({ children }) => {
         });
         return setLoading(() => false);
       }
+      if (error.response && error.response.data && !error.response.data.error) {
+        setNotificationResponse({
+          status: true,
+          response: error.response.statusText,
+          list: [],
+          color: "#ff3547",
+        });
+        return setLoading(() => false);
+      }
       if (
         error.response &&
         error.response.data &&

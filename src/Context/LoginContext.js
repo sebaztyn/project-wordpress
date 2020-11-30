@@ -43,6 +43,7 @@ const LoginProvider = ({ children }) => {
         method: "POST",
         data: loginData,
       });
+      console.log("result :>> ", result);
       if (result.status === 201) {
         tokenAccess.setToken(result.data.token);
         setNotificationResponse({
@@ -52,7 +53,9 @@ const LoginProvider = ({ children }) => {
         setTimeout(() => {
           setNotificationResponse({ ...notificationResponse, response: "" });
           setLoading(() => false);
-          history.replace("/home");
+          result.data.role_name === "admin"
+            ? history.replace("/admin")
+            : history.replace("/home");
         }, 5000);
       }
     } catch (error) {

@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 
 const theme = {
   primaryColor: "#002e5b",
+  white: "#ffffff",
   complimentaryColor: "#fde428",
   inputFieldColor: "#e8f0fe",
   dangerColor: "#ff3547",
