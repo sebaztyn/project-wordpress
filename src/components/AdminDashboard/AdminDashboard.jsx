@@ -13,6 +13,8 @@ import {
 } from "./AdminDashboard.style";
 import { NavContainer } from "../Header/Header.style";
 import NavMenu from "../NavMenu/NavMenu";
+import Table from "../Tables/Table";
+import TableProvider from "../../Context/TableContext";
 
 const AdminDashboard = () => {
   return (
@@ -59,6 +61,9 @@ const AdminDashboard = () => {
             </DataCard>
           </DisplayCards>
         </AdminDashboardCardContainer>
+        <TableProvider>
+          <Table />
+        </TableProvider>
       </AdminDashboardContainer>
     </>
   );

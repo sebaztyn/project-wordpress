@@ -4,8 +4,6 @@ import { SiCashapp } from "react-icons/si";
 import styled from "styled-components";
 
 export const AdminDashboardContainer = styled.div`
-  display: grid;
-  grid-template-rows: minmax(200px, 350px) 1fr;
   background-color: #ecf0f5;
   min-height: 100vh;
 `;

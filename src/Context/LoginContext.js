@@ -43,7 +43,6 @@ const LoginProvider = ({ children }) => {
         method: "POST",
         data: loginData,
       });
-      console.log("result :>> ", result);
       if (result.status === 201) {
         tokenAccess.setToken(result.data.token);
         setNotificationResponse({
@@ -94,7 +93,6 @@ const LoginProvider = ({ children }) => {
     }
   };
 
-  console.log("process.env.NODE_ENV :>> ", process.env.NODE_ENV);
   return (
     <loginContext.Provider
       value={{
