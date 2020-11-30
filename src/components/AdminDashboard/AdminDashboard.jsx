@@ -20,8 +20,11 @@ const AdminDashboard = () => {
   const { windowHeight, windowWidth } = useWindowSize();
   const {
     tableData: { rows, count },
+    adminData: { rows: adminRows, count: AdminCount },
   } = useContext(tableContext);
 
+  console.log("AdminCount :>> ", AdminCount);
+  console.log("adminRows", adminRows);
   return (
     <>
       <NavContainer>
@@ -44,7 +47,7 @@ const AdminDashboard = () => {
             </IconContainer>
             <DataCard>
               <label>Admin</label>
-              <span>2</span>
+              <span>{AdminCount}</span>
             </DataCard>
           </DisplayCards>
           <DisplayCards>

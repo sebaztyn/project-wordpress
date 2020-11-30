@@ -14,7 +14,7 @@ package-lock.json
 /build
 
 # server folder
-/server
+/server/
 
 # misc
 .DS_Store
