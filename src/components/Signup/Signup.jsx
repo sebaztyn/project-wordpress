@@ -92,6 +92,7 @@ const Signup = () => {
               </SignupButton>
             </SignupInputContainer>
             {notificationResponse.status &&
+              notificationResponse.list &&
               notificationResponse.list.length && (
                 <NotificationContent
                   response={notificationResponse.list}

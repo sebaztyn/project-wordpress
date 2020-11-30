@@ -31,7 +31,9 @@ const Header = () => {
           &nbsp;+2349059134244,+2348035332543
         </HotlineDiv>
       </HeaderContainer>
-      <NavContainer>{<NavMenu />}</NavContainer>
+      <NavContainer>
+        <NavMenu />
+      </NavContainer>
     </>
   );
 };

@@ -1,11 +1,11 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
-export const loginContext = createContext();
 import axiosInstance from "../utils/fetchData";
 import tokenAccess from "../utils/tokenAccess";
 import { globalContext, initialState } from "./GlobalContext";
 
+export const loginContext = createContext();
 const LoginProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -43,6 +43,7 @@ const LoginProvider = ({ children }) => {
         method: "POST",
         data: loginData,
       });
+      console.log("result :>> ", result);
       if (result.status === 201) {
         tokenAccess.setToken(result.data.token);
         setNotificationResponse({
@@ -52,7 +53,9 @@ const LoginProvider = ({ children }) => {
         setTimeout(() => {
           setNotificationResponse({ ...notificationResponse, response: "" });
           setLoading(() => false);
-          history.replace("/home");
+          result.data.role_name === "admin"
+            ? history.replace("/admin")
+            : history.replace("/home");
         }, 5000);
       }
     } catch (error) {
@@ -91,6 +94,7 @@ const LoginProvider = ({ children }) => {
     }
   };
 
+  console.log("process.env.NODE_ENV :>> ", process.env.NODE_ENV);
   return (
     <loginContext.Provider
       value={{
