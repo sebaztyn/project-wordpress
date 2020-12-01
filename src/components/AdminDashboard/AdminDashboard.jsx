@@ -95,14 +95,12 @@ const AdminDashboard = () => {
             </DataCard>
           </DisplayCards>
         </AdminDashboardCardContainer>
-        <TableProvider>
-          <Filter
-            selectedOption={selectedOption}
-            setSelectedOption={setSelectedOption}
-            handleChange={handleChange}
-          />
-          <Table columnCount={5} tableData={{ rows, count }} />
-        </TableProvider>
+        <Filter
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+          handleChange={handleChange}
+        />
+        <Table columnCount={5} tableData={{ rows, count }} />
       </AdminDashboardContainer>
     </>
   );
