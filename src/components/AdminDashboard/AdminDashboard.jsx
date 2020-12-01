@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   AdminDashboardCardContainer,
   AdminDashboardContainer,
@@ -15,16 +15,42 @@ import NavMenu from "../NavMenu/NavMenu";
 import Table from "../Tables/Table";
 import TableProvider, { tableContext } from "../../Context/TableContext";
 import useWindowSize from "../../utils/useWindowSize";
+import Filter from "../Filter/Filter";
 
 const AdminDashboard = () => {
   const { windowHeight, windowWidth } = useWindowSize();
+  const [counts, setCounts] = useState({
+    admin: 0,
+    user: 0,
+    payment: 0,
+  });
   const {
     tableData: { rows, count },
-    adminData: { rows: adminRows, count: AdminCount },
+    adminData: { rows: adminRows, adminCount, paymentCount, userCount },
+    loading,
+    selectedOption,
+    setSelectedOption,
+    handleChange,
   } = useContext(tableContext);
 
-  console.log("AdminCount :>> ", AdminCount);
+  useEffect(() => {
+    if (!loading) {
+      console.log("adminCount :>> ", adminCount);
+      console.log("paymentCount :>> ", paymentCount);
+      console.log("userCount :>> ", userCount);
+      setCounts({
+        ...counts,
+        admin: adminCount,
+        user: userCount,
+        payment: paymentCount,
+      });
+    }
+  }, [loading]);
+
+  console.log("AdminCount :>> ", adminCount);
   console.log("adminRows", adminRows);
+  console.log("loading", loading);
+  console.log("counts :>> ", counts);
   return (
     <>
       <NavContainer>
@@ -38,7 +64,7 @@ const AdminDashboard = () => {
             </IconContainer>
             <DataCard>
               <label>Users</label>
-              <span>10</span>
+              <span>{counts.user}</span>
             </DataCard>
           </DisplayCards>
           <DisplayCards>
@@ -47,7 +73,7 @@ const AdminDashboard = () => {
             </IconContainer>
             <DataCard>
               <label>Admin</label>
-              <span>{AdminCount}</span>
+              <span>{counts.admin}</span>
             </DataCard>
           </DisplayCards>
           <DisplayCards>
@@ -56,7 +82,7 @@ const AdminDashboard = () => {
             </IconContainer>
             <DataCard>
               <label>Payments</label>
-              <span>2</span>
+              <span>{counts.payment}</span>
             </DataCard>
           </DisplayCards>
           <DisplayCards>
@@ -70,6 +96,11 @@ const AdminDashboard = () => {
           </DisplayCards>
         </AdminDashboardCardContainer>
         <TableProvider>
+          <Filter
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+            handleChange={handleChange}
+          />
           <Table columnCount={5} tableData={{ rows, count }} />
         </TableProvider>
       </AdminDashboardContainer>
@@ -77,4 +108,6 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+const memoized = React.memo(AdminDashboard);
+
+export default memoized;

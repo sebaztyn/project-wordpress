@@ -28,4 +28,6 @@ const Table = ({ columnCount, tableData }) => {
   );
 };
 
-export default Table;
+const memoized = React.memo(Table);
+
+export default memoized;
