@@ -6,7 +6,7 @@ import HomepageContactForm from "../HomepageContactForm/HomepageContactForm";
 import HomeServices from "../HomepageServices/HomeServices";
 import Login from "../Login/Login";
 import Signup from "../Signup/Signup";
-import { Route, useRouteMatch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 const Homepage = () => {
   // const { path, match } = useRouteMatch();
@@ -20,8 +20,10 @@ const Homepage = () => {
       <HomeBanner />
       <HomeServices />
       <HomepageContactForm />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={Signup} />
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+      </Switch>
     </div>
   );
 };

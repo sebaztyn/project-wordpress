@@ -1,6 +1,5 @@
 import React from "react";
 import PaystackIntegration from "../../utils/PaystackIntegration";
-import Stepper from "../Stepper/Stepper";
 import Videos from "../Videos/Videos.jsx";
 import { Switch, Route } from "react-router-dom";
 import Homepage from "../Homepage/Homepage";
@@ -23,7 +22,7 @@ const Layout = () => {
           <Route
             key={index}
             component={data.component}
-            exact={data.isExact}
+            // exact={data.isExact}
             path={data.path}
           />
         );
