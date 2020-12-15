@@ -5,13 +5,14 @@ import Videos from "../Videos/Videos.jsx";
 import { Switch, Route } from "react-router-dom";
 import Homepage from "../Homepage/Homepage";
 import Admin from "../AdminDashboard/Admin";
+import Dashboard from "../Dashboard/Dashboard";
 
 const routes = [
-  { component: Videos, path: "/videos", isExact: true },
-  { component: PaystackIntegration, path: "/payment", isExact: true },
-  { component: Stepper, path: "/home", isExact: true },
-  { component: Admin, path: "/admin", isExact: true },
-  { component: Homepage, path: "/", isExact: false },
+  { component: Videos, path: "/videos", isExact: false },
+  { component: PaystackIntegration, path: "/payment", isExact: false },
+  { component: Dashboard, path: "/home", isExact: false },
+  { component: Admin, path: "/admin", isExact: false },
+  { component: Homepage, path: "/", isExact: true },
 ];
 
 const Layout = () => {

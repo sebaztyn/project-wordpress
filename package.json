@@ -17,7 +17,7 @@
   },
   "scripts": {
     "serve": "node deploy.js",
-    "start": "react-scripts start",
+    "start": "cross-env PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
@@ -47,6 +47,7 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^5.0.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.1",

@@ -8,6 +8,7 @@ import SignupProvider from "./Context/SignupContext";
 import LoginProvider from "./Context/LoginContext.js";
 import GlobalProvider from "./Context/GlobalContext";
 import TableProvider from "./Context/TableContext";
+import DashboardProvider from "./Context/DashboardContext";
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
           <SignupProvider>
             <LoginProvider>
               <TableProvider>
-                <Layout />
+                <DashboardProvider>
+                  <Layout />
+                </DashboardProvider>
               </TableProvider>
             </LoginProvider>
           </SignupProvider>

@@ -1,9 +1,14 @@
-import React from "react";
 import styled from "styled-components";
 import { MdPayment } from "react-icons/md";
+import { AiOutlineFolderOpen } from "react-icons/ai";
 
 export const PaymentIcon = styled(MdPayment)`
   color: ${(props) => props.theme.complimentaryColor};
+  font-size: 24px;
+`;
+export const InProgressIcon = styled(AiOutlineFolderOpen)`
+  color: ${(props) => props.theme.complimentaryColor};
+  font-size: 24px;
 `;
 export const StepperContainer = styled.div``;
 
@@ -22,10 +27,13 @@ export const StepperNodeContainer = styled.div`
 export const StepperNodeText = styled.span`
   color: ${(props) => props.theme.primaryColor};
   flex: 1;
-  text-align: center;
+  /* text-align: center; */
   position: absolute;
   top: 100%;
-  left: -10px;
+  left: -1rem;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
   text-align: left;
 `;
 
