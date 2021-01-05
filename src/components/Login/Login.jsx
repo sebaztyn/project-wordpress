@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { NavLink, useHistory } from "react-router-dom";
-import DisplayImage from "../../assets/undraw_developer_activity_bv83.png";
+import React, { useContext } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import DisplayImage from '../../assets/undraw_developer_activity_bv83.png';
 import {
   CloseButton,
   LoginContainer,
@@ -13,13 +13,13 @@ import {
   RegisterLink,
   LoginImage,
   CreateButton,
-} from "./Login.style";
-import { loginContext } from "../../Context/LoginContext.js";
-import Notification from "../Notification/Notification";
-import Spinner from "../Spinner/Spinner";
+} from './Login.style';
+import { loginContext } from '../../Context/LoginContext.js';
+import Notification from '../Notification/Notification';
+import Spinner from '../Spinner/Spinner';
 
 const Login = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const {
     loginData,
     notificationResponse,
@@ -32,39 +32,41 @@ const Login = () => {
     <>
       <LoginContainer>
         <LoginWrapper>
-          <CloseButton onClick={() => history.replace("/")}>Close</CloseButton>
+          <CloseButton onClick={() => navigate('/', { replace: true })}>
+            Close
+          </CloseButton>
           <span>
-            <LoginImage src={DisplayImage} alt="login-image" />
+            <LoginImage src={DisplayImage} alt='login-image' />
           </span>
           <span>
             <LoginContent>
               <LoginHeader>Welcome Back &nbsp; :)</LoginHeader>
               <LoginInputContainer>
                 <LoginInput
-                  placeholder="Email"
-                  type="email"
-                  name="email"
+                  placeholder='Email'
+                  type='email'
+                  name='email'
                   onChange={changeHandler}
                   value={loginData.email}
                 />
                 <LoginInput
-                  placeholder="Password"
-                  type="password"
-                  name="password"
+                  placeholder='Password'
+                  type='password'
+                  name='password'
                   onChange={changeHandler}
                   value={loginData.password}
                 />
 
-                <div style={{ display: "flex", marginTop: "1rem" }}>
+                <div style={{ display: 'flex', marginTop: '1rem' }}>
                   <LoginButton onClick={submitHandler}>
-                    {" "}
-                    {loading ? <Spinner /> : "Login"}
+                    {' '}
+                    {loading ? <Spinner /> : 'Login'}
                   </LoginButton>
-                  <CreateButton to="/signup">Create Account</CreateButton>
+                  <CreateButton to='/signup'>Create Account</CreateButton>
                 </div>
               </LoginInputContainer>
               <RegisterLink>
-                Not yet a member?&nbsp;<NavLink to="/signup">Sign up</NavLink>
+                Not yet a member?&nbsp;<NavLink to='/signup'>Sign up</NavLink>
               </RegisterLink>
             </LoginContent>
           </span>
@@ -74,7 +76,7 @@ const Login = () => {
         <Notification response={notificationResponse.list} />
       )}
       {notificationResponse.response &&
-        typeof notificationResponse.response === "string" && (
+        typeof notificationResponse.response === 'string' && (
           <Notification
             response={notificationResponse.response}
             color={notificationResponse.color}

@@ -1,7 +1,7 @@
-import React from "react";
-import { TableContainer, TableContent, TableHeader } from "./Table.style.jsx";
+import React from 'react';
+import { TableContainer, TableContent, TableHeader } from './Table.style.jsx';
 
-const Table = ({ columnCount, tableData }) => {
+const Table = ({ columnCount, tableData, displayUser }) => {
   const { rows, count } = tableData;
   return (
     <TableContainer>
@@ -15,7 +15,12 @@ const Table = ({ columnCount, tableData }) => {
       {Array.isArray(rows) &&
         rows.map((data, index) => {
           return (
-            <TableContent key={index} columnCount={columnCount}>
+            <TableContent
+              key={index}
+              columnCount={columnCount}
+              onClick={displayUser}
+              data-userid={data.id}
+            >
               <span>{data.firstname}</span>
               <span>{data.lastname}</span>
               <span>{data.payment_status}</span>

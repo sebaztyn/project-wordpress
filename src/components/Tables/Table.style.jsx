@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 export const TableContainer = styled.div`
   padding: 0.3rem;
@@ -8,7 +8,7 @@ export const TableContainer = styled.div`
   min-height: calc(100vh - 250px);
   background-color: ${(props) => props.theme.white};
   ${
-    "" /* display: grid;
+    '' /* display: grid;
   grid-template-columns: repeat(
     ${(props) => props.columnCount},
     minmax(200px, 1fr)
@@ -28,7 +28,7 @@ export const TableHeader = styled.div`
   padding: 0.5rem;
   padding-bottom: 1rem;
 `;
-export const TableContent = styled.div`
+export const TableContent = styled.a`
   display: grid;
   grid-template-columns: repeat(
     ${(props) => props.columnCount},

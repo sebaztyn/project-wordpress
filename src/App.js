@@ -7,7 +7,7 @@ import { HashRouter as Router } from "react-router-dom";
 import SignupProvider from "./Context/SignupContext";
 import LoginProvider from "./Context/LoginContext.js";
 import GlobalProvider from "./Context/GlobalContext";
-import TableProvider from "./Context/TableContext";
+// import TableProvider from "./Context/TableContext";
 import DashboardProvider from "./Context/DashboardContext";
 
 function App() {
@@ -17,11 +17,9 @@ function App() {
         <GlobalProvider>
           <SignupProvider>
             <LoginProvider>
-              <TableProvider>
-                <DashboardProvider>
-                  <Layout />
-                </DashboardProvider>
-              </TableProvider>
+              <DashboardProvider>
+                <Layout />
+              </DashboardProvider>
             </LoginProvider>
           </SignupProvider>
         </GlobalProvider>

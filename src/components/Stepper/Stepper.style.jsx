@@ -27,14 +27,15 @@ export const StepperNodeContainer = styled.div`
 export const StepperNodeText = styled.span`
   color: ${(props) => props.theme.primaryColor};
   flex: 1;
-  /* text-align: center; */
+  text-align: center;
   position: absolute;
+  margin-top: 1rem;
   top: 100%;
-  left: -1rem;
+  left: -65%;
   font-weight: 600;
   font-size: 14px;
   text-transform: uppercase;
-  text-align: left;
+  /* text-align: left; */
 `;
 
 export const StepperNode = styled.span`

@@ -1,12 +1,12 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState } from 'react';
 
 export const globalContext = createContext();
 
 export const initialState = {
   status: false,
   list: [],
-  response: "",
-  color: "#3bc552",
+  response: '',
+  color: '#3bc552',
 };
 const GlobalProvider = ({ children }) => {
   const [notificationResponse, setNotificationResponse] = useState(

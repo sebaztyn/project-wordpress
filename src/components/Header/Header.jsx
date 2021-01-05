@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   HeaderContainer,
   HeaderButton,
@@ -8,8 +8,8 @@ import {
   ContentDiv,
   HotlineDiv,
   NavContainer,
-} from "./Header.style";
-import NavMenu from "../NavMenu/NavMenu";
+} from './Header.style';
+import NavMenu from '../NavMenu/NavMenu';
 
 const Header = () => {
   return (

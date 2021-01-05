@@ -1,24 +1,24 @@
-import React from "react";
-import styled from "styled-components";
-import { ImFacebook, ImTwitter } from "react-icons/im";
-import { FaInstagram } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import styled from 'styled-components';
+import { ImFacebook, ImTwitter } from 'react-icons/im';
+import { FaInstagram } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
-export const NavContainer = styled.nav`
-  padding: 0.5rem 0;
-  ${"" /* max-width: 1040px; */}
+export const NavContainer = styled.div`
+  padding: 0.5rem 1.5rem;
+  ${'' /* max-width: 1040px; */}
   margin: auto;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   background-color: #ffffff;
 `;
 
 export const NavList = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   font-weight: 500;
+  flex: 1;
 `;
 
 export const NavListItem = styled.li`
@@ -130,6 +130,7 @@ export const NavListLink = styled.a`
   padding: 0 10px;
   text-decoration: none;
   color: ${(props) => props.theme.primaryColor};
+  cursor: pointer;
 `;
 
 export const FacebookIcon = styled(ImFacebook)`
@@ -144,10 +145,21 @@ export const InstagramIcon = styled(FaInstagram)`
   color: ${(props) => props.theme.primaryColor};
   font-size: 16px;
 `;
-export const NavRouteLink = styled(NavLink)`
-  padding: 0 10px;
+export const NavRouteLink = styled.button`
+  padding: 10px 20px;
   text-decoration: none;
-  color: ${(props) => props.theme.primaryColor};
+  color: #ffffff;
+  background-color: ${(props) => props.loginColor || props.logoutColor};
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  /* background-color: transparent; */
+  :focus {
+    border: none;
+    outline: none;
+  }
 `;
 export const VideoRouteLink = styled(NavLink)`
   white-space: nowrap;
