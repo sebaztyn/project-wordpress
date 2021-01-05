@@ -57,8 +57,16 @@ const SignupProvider = ({ children }) => {
             ...notificationResponse,
             response: '',
           });
+          localStorage.setItem(
+            'user-info',
+            JSON.stringify({
+              roleName: result.data.role_name,
+              authenticated: true,
+              currentStage: result.data.current_stage,
+            }),
+          );
           setLoading(() => false);
-          navigate('/', { replace: true });
+          navigate('/home', { replace: true });
         }, 3000);
       }
     } catch (error) {
