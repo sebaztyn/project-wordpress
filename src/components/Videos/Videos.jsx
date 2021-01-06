@@ -2,6 +2,14 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { videoContext } from '../../Context/VideoContext';
 import axiosInstance from '../../utils/fetchData';
 import useRefreshToken from '../../utils/useRefreshToken';
+import { NavContainer } from '../Header/Header.style';
+import NavMenu from '../NavMenu/NavMenu';
+import {
+  VideoContainer,
+  VideoSection,
+  VideoTextInput,
+  VideoTitle,
+} from './Video.style';
 
 const Videos = () => {
   const fileInputRef = useRef(null);
@@ -18,6 +26,7 @@ const Videos = () => {
     videoTitle,
     setVideoFile,
     setVideoTitle,
+    cancelUploadHandler,
   } = useContext(videoContext);
   useEffect(() => {
     const saveVideo = async () => {
@@ -36,7 +45,6 @@ const Videos = () => {
             data,
           });
           if (result.status === 200 || result.status === 201) {
-            console.log('Hello>>>>>>>>>>');
             setVideoFile({
               file: null,
               fileName: null,
@@ -62,34 +70,57 @@ const Videos = () => {
     await uploadData({ parsedData, file: videoFile.file });
   };
   return (
-    <div>
-      <h3>Data upload</h3>
-      <input
-        type='text'
-        name='title'
-        onChange={fileTitleHandler}
-        value={videoTitle}
-        placeholder='Enter video title'
-      />
-      <br />
-      <input
-        type='file'
-        name='videoFile'
-        id=''
-        onChange={onFileChange}
-        ref={fileInputRef}
-      />
-      <button type='submit' onClick={submitVideoHandler}>
-        Upload Video
-      </button>
-      {isUploading ? (
-        <div>
-          Upload: {uploadProgress}%.&nbsp;
-          <br />
-          {uploadProgress === 100 ? 'Saving, please wait....' : null}
-        </div>
-      ) : null}
-    </div>
+    <>
+      <NavContainer>
+        <NavMenu />
+      </NavContainer>
+      <VideoContainer>
+        <VideoTitle>Video upload</VideoTitle>
+        <VideoSection>
+          <label htmlFor='video-title'>
+            <span>Video title*</span>
+            <VideoTextInput
+              type='text'
+              name='title'
+              id='video-title'
+              onChange={fileTitleHandler}
+              value={videoTitle}
+              placeholder='Enter video title'
+            />
+          </label>
+          <input
+            type='file'
+            name='videoFile'
+            id=''
+            onChange={onFileChange}
+            ref={fileInputRef}
+          />
+          {isUploading ? (
+            <div>
+              Upload: {uploadProgress}%.&nbsp;
+              <br />
+              {uploadProgress === 100 ? 'Saving, please wait....' : null}
+            </div>
+          ) : null}
+          <div className='button-controls'>
+            <button
+              className='submit-button'
+              type='submit'
+              onClick={submitVideoHandler}
+            >
+              Upload Video
+            </button>
+            {/* <button
+              type='button'
+              className='cancel-button'
+              onClick={cancelUploadHandler}
+            >
+              Cancel upload
+            </button> */}
+          </div>
+        </VideoSection>
+      </VideoContainer>
+    </>
   );
 };
 

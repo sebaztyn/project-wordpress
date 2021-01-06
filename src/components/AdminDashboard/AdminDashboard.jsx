@@ -14,13 +14,12 @@ import {
 import { NavContainer } from '../Header/Header.style';
 import NavMenu from '../NavMenu/NavMenu';
 import Table from '../Tables/Table';
-import TableProvider, { tableContext } from '../../Context/TableContext';
+import { tableContext } from '../../Context/TableContext';
 import useWindowSize from '../../utils/useWindowSize';
 import Filter from '../Filter/Filter';
 import Modal from '../Modal/Modal';
 import Select from 'react-select';
 import Spinner from '../Spinner/Spinner';
-import { globalContext } from '../../Context/GlobalContext';
 
 const paymentOptions = [
   { value: 'PAID', label: 'PAID' },
@@ -51,7 +50,6 @@ const AdminDashboard = () => {
     user: 0,
     payment: 0,
   });
-  // const { isAuthenticated } = useContext(globalContext);
   const {
     tableData: { rows, count },
     adminData: { rows: adminRows, adminCount, paymentCount, userCount },
@@ -63,7 +61,6 @@ const AdminDashboard = () => {
     modal: modalData,
     setModal,
     updateRecord,
-    isAuthenticated,
   } = useContext(tableContext);
   const [paymentOption, setPaymentOption] = useState(null);
   const [currentStage, setCurrentStage] = useState(null);
@@ -117,7 +114,7 @@ const AdminDashboard = () => {
   return (
     <>
       <NavContainer>
-        <NavMenu authenticated={isAuthenticated} />
+        <NavMenu />
       </NavContainer>
       <AdminDashboardContainer>
         <AdminDashboardCardContainer>

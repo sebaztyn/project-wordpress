@@ -20,6 +20,11 @@ const VideoContextProvider = ({ children }) => {
   const fileTitleHandler = (evt) => {
     setVideoTitle(evt.target.value);
   };
+  const cancelTokenSource = axios.CancelToken.source();
+  const cancelUploadHandler = (evt) => {
+    console.log('We are cancelling>>>>>>');
+    cancelTokenSource.cancel();
+  };
   const uploadData = async ({ parsedData, file }) => {
     setIsUploading(() => true);
     try {
@@ -33,6 +38,7 @@ const VideoContextProvider = ({ children }) => {
         data: formData,
         method: 'POST',
         headers: { 'Content-Type': 'multipart/form-data' },
+        cancelToken: cancelTokenSource.token,
         onUploadProgress: (evt) => {
           setUploadProgress(Math.floor((evt.loaded * 100) / evt.total));
         },
@@ -57,6 +63,7 @@ const VideoContextProvider = ({ children }) => {
         videoTitle,
         setVideoTitle,
         setVideoFile,
+        cancelUploadHandler,
       }}
     >
       {children}
