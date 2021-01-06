@@ -97,11 +97,21 @@ export const UserDetails = styled.div`
     width: 20%;
     margin-left: auto;
     margin-bottom: 2rem;
-    padding: 0.5rem;
     background-color: ${(props) => props.theme.dangerColor};
     color: #ffffff;
     outline: none;
     border: 1px solid transparent;
+    font-size: 14px;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s linear 0s;
+    :hover {
+      color: ${(props) => props.theme.dangerColor};
+      background-color: #ffffff;
+      border: 1px solid ${(props) => props.theme.dangerColor};
+    }
     :focus {
       outline: none;
     }
@@ -121,6 +131,7 @@ export const UserDetails = styled.div`
         color: ${(props) => props.theme.complimentaryColor};
         padding: 0.5rem;
         border-radius: 4px;
+        cursor: pointer;
         :focus {
           outline: none;
         }
@@ -141,6 +152,7 @@ export const UserDetails = styled.div`
         color: ${(props) => props.theme.complimentaryColor};
         padding: 0.5rem;
         border-radius: 4px;
+        cursor: pointer;
         :focus {
           outline: none;
         }

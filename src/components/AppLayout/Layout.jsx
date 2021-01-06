@@ -9,6 +9,7 @@ import RegistrationReview from '../RegistrationReview/RegistrationReview';
 import Payment from '../PaymentDashboard/Payment';
 import Signup from '../Signup/Signup';
 import Login from '../Login/Login';
+import VideoContextProvider from '../../Context/VideoContext';
 
 const routes = [
   { component: <Videos />, path: '/videos', isExact: false },
@@ -21,7 +22,14 @@ const routes = [
 const Layout = () => {
   return (
     <Routes>
-      <Route element={<Videos />} path='videos' />
+      <Route
+        element={
+          <VideoContextProvider>
+            <Videos />
+          </VideoContextProvider>
+        }
+        path='videos'
+      />
       <Route element={<PaystackIntegration />} path='payment' />
       <Route element={<Dashboard />} path='home/*'>
         <Route path='/' element={<Payment />} exact />
