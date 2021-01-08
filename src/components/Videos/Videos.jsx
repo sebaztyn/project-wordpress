@@ -110,13 +110,13 @@ const Videos = () => {
             >
               Upload Video
             </button>
-            {/* <button
+            <button
               type='button'
               className='cancel-button'
               onClick={cancelUploadHandler}
             >
               Cancel upload
-            </button> */}
+            </button>
           </div>
         </VideoSection>
       </VideoContainer>
